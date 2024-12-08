@@ -4775,6 +4775,25 @@ input, select, textarea {
 		color: #ddd;
 	  }
 
+	
+	/* Responsive styles */
+	@media (max-width: 768px) {
+    	.skills-table {
+        	display: block;
+        	overflow-x: auto; /* Enable scrolling for narrow screens */
+    	}
+
+    	.skills-row {
+        	flex-direction: column; /* Stack items vertically on mobile */
+        	align-items: flex-start; /* Align items to the left */
+        	margin-bottom: 10px; /* Add spacing between rows */
+    	}
+
+    	.skill-name {
+        	margin-bottom: 5px; /* Spacing for stacked items */
+    	}
+	}
+
 	  .centered-image {
 		max-width: 100%; /* Adjust the maximum width as needed */
 		height: auto; /* Maintain aspect ratio */
