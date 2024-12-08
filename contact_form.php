@@ -8,7 +8,7 @@ $email = $_POST['email'];
 $message = $_POST['message'];
 
 // Email headers
-$headers = "From: noreply@example.com\r\n"; // Default sender email
+$headers = "From: harrish.nr@gmail.com\r\n"; // Default sender email
 $headers .= "Reply-To: $email\r\n"; // Reply to user's email
 
 // Email subject and body
