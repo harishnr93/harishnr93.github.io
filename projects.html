@@ -101,6 +101,13 @@
 								<p> Implemented a visual odometry pipeline using feature extraction and matching techniques to estimate camera motion from sequential images. The system utilizes ORB features, FLANN matching, and Essential Matrix Decomposition (or PnP with RANSAC) to track movement and reconstruct the camera trajectory. The project integrates dataset handling, feature visualization, and trajectory estimation for real-time motion analysis. Outputs include matched feature visualizations and 3D camera trajectory plots. This implementation serves as a foundation for further enhancements, such as advanced feature descriptors, bundle adjustment, and loop closure detection for improved accuracy.</p>
 								
 								<div class="image main">
+									<img src="images/radar_perception.jpg" alt="" class="centered-image">
+								</div>
+								<h3> Automotive Radar Perception Pipeline | ROS2, CAN, Object Tracking</h3>
+								<h4 style="margin-top: -15px;"> Independent Development Projects | Leonberg, DE</h4>
+								<p>Implemented a modular radar perception pipeline based on the Conti ARS408 radar sensor within the ROS 2 framework. The project centered around a ROS 2 lifecycle node that subscribed to real-time CAN bus messages, decoded raw radar frames, and generated dynamic object tracks with rich metadata including position, velocity, orientation, and object classification. Lifecycle states were leveraged for deterministic startup, shutdown, and fault handling, ensuring system reliability. The node published object lists, TF transforms, and visualization markers in RViz, enabling seamless integration into autonomous systems. Core components included low-level bitfield parsing, temporal object state management, and 3D visualization of ego-vehicle and target objects. The implementation demonstrates advanced skills in real-time sensor fusion, middleware architecture, and embedded robotics perception.</p>
+								
+								<div class="image main">
 									<img src="images/depth_estimation_transformers.jpg" alt="" class="centered-image">
 								</div>
 								<h3> Monocular Depth Estimation with Transformers | Python, Computer Vision </h3>
