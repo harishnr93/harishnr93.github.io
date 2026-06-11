@@ -1,3 +1,0 @@
-- 👋 Hi, I’m Harish Natarajan Ravi
-- 👀 I’m interested in Embedded Systems, Computer Vision, Machine Learning and Data Science topics
-- 📫 You can reach me on - harrish.nr@gmail.com
