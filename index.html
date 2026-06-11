@@ -1,0 +1,2003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Harish Natarajan Ravi – Embedded, Perception & Software Engineer based in Germany.">
+  <title>Harish Natarajan Ravi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── DESIGN TOKENS ─── */
+    :root {
+      --bg:          #0c1018;
+      --surface:     #131a24;
+      --surface2:    #1a2332;
+      --accent:      #c4923a;
+      --accent-h:    #d9a950;
+      --accent2:     #7a9cb5;
+      --accent3:     #6b9e7a;
+      --text:        #dde5f0;
+      --muted:       #8693a6;
+      --dim:         #546070;
+      --border:      rgba(196,146,58,0.11);
+      --border-s:    rgba(196,146,58,0.22);
+      --radius:      10px;
+      --radius-sm:   7px;
+      --nav-h:       64px;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.25; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { opacity: 0.82; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    /* ─── LANGUAGE SWITCHING ─── */
+    html:not(.de) .lang-de { display: none !important; }
+    html.de       .lang-en { display: none !important; }
+
+    /* ─── LAYOUT ─── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    .section    { padding: 92px 0; }
+
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.35rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      font-family: 'Inter', sans-serif;
+      color: var(--muted);
+      font-size: 0.975rem;
+      max-width: 560px;
+      margin-bottom: 52px;
+      line-height: 1.8;
+    }
+
+    /* ─── TAGS ─── */
+    .tag {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 3px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      background: rgba(196,146,58,0.09);
+      color: var(--accent);
+      border: 1px solid rgba(196,146,58,0.20);
+    }
+    .tag-steel {
+      background: rgba(122,156,181,0.09);
+      color: var(--accent2);
+      border-color: rgba(122,156,181,0.20);
+    }
+    .tag-sage {
+      background: rgba(107,158,122,0.09);
+      color: var(--accent3);
+      border-color: rgba(107,158,122,0.20);
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0c1018;
+    }
+    .btn-primary:hover { background: var(--accent-h); opacity: 1; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border-s);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); opacity: 1; transform: translateY(-1px); }
+
+    /* ═══════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════ */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(12,16,24,0.93);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links { display: flex; align-items: center; gap: 0; }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 5px;
+      transition: color 0.18s;
+      letter-spacing: 0.01em;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text); opacity: 1; }
+
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+
+    .lang-toggle {
+      display: flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .lang-btn {
+      padding: 5px 11px;
+      cursor: pointer;
+      color: var(--muted);
+      background: transparent;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      transition: all 0.18s;
+    }
+    .lang-btn.active { background: var(--accent); color: #0c1018; }
+    .lang-btn:hover:not(.active) { color: var(--text); }
+
+    .nav-icon-links { display: flex; align-items: center; }
+    .nav-icon-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 7px 9px;
+      border-radius: 5px;
+      transition: color 0.18s;
+    }
+    .nav-icon-links a:hover { color: var(--accent); opacity: 1; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--muted);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: rgba(12,16,24,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 28px 20px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Inter', sans-serif;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 11px 14px;
+      border-radius: 6px;
+      transition: all 0.18s;
+    }
+    .mobile-menu a:hover { color: var(--text); opacity: 1; }
+
+    /* ═══════════════════════════════
+       HERO
+    ═══════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: var(--nav-h);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 10% 40%, rgba(196,146,58,0.055) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 90% 55%, rgba(122,156,181,0.035) 0%, transparent 60%),
+        var(--bg);
+    }
+
+    .hero-dot-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.028) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(ellipse 65% 65% at 50% 50%, black 0%, transparent 100%);
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow-line {
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+    .hero-eyebrow-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero-name {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+    .hero-name .grad {
+      background: linear-gradient(135deg, #c4923a 0%, #e8c570 50%, #c4923a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-location {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--dim);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      margin-bottom: 38px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 56px;
+    }
+
+    .cv-dropdown-wrap { position: relative; }
+    .cv-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: var(--surface2);
+      border: 1px solid var(--border-s);
+      border-radius: var(--radius-sm);
+      padding: 6px;
+      display: none;
+      min-width: 160px;
+      z-index: 100;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .cv-dropdown.open { display: block; }
+    .cv-dropdown a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 5px;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .cv-dropdown a:hover { color: var(--text); background: rgba(255,255,255,0.05); opacity: 1; }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-top: 5px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ═══════════════════════════════
+       ABOUT
+    ═══════════════════════════════ */
+    #about {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-photo-col { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+
+    .about-photo-frame {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+    .about-photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(196,146,58,0.22);
+    }
+    .about-photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: -18px;
+      border-radius: 50%;
+      border: 1px solid rgba(196,146,58,0.09);
+    }
+
+    .about-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(196,146,58,0.30);
+      box-shadow: 0 0 36px rgba(196,146,58,0.10);
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-social { display: flex; gap: 8px; }
+    .about-social a {
+      width: 34px;
+      height: 34px;
+      border-radius: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+    .about-social a:hover { color: var(--accent); border-color: var(--border-s); opacity: 1; }
+
+    .about-intro {
+      font-size: 1.025rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 26px;
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .value-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      transition: border-color 0.2s;
+    }
+    .value-card:hover { border-color: var(--border-s); }
+
+    .value-icon {
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 9px;
+    }
+    .value-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 5px;
+      letter-spacing: 0.01em;
+    }
+    .value-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.58; }
+
+    /* ═══════════════════════════════
+       EXPERIENCE
+    ═══════════════════════════════ */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 12px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), rgba(196,146,58,0.05));
+    }
+
+    .tl-item { position: relative; margin-bottom: 28px; }
+    .tl-item:last-child { margin-bottom: 0; }
+
+    .tl-dot {
+      position: absolute;
+      left: -25px;
+      top: 10px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+    }
+
+    .tl-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      transition: border-color 0.2s;
+    }
+    .tl-card:hover { border-color: var(--border-s); }
+
+    .tl-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .tl-logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: var(--surface2);
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+    .tl-role {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.975rem;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .tl-company {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+    .tl-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--dim);
+      margin-top: 5px;
+    }
+    .tl-meta span { display: flex; align-items: center; gap: 4px; }
+    .tl-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .tl-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+    /* ═══════════════════════════════
+       EDUCATION
+    ═══════════════════════════════ */
+    .edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .edu-card:hover { border-color: var(--border-s); }
+
+    .edu-img { width: 100%; height: 150px; object-fit: cover; filter: brightness(0.88); }
+    .edu-body { padding: 22px; }
+    .edu-degree { font-weight: 600; font-size: 1rem; color: var(--text); margin-bottom: 4px; }
+    .edu-school {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .edu-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--dim);
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .edu-meta span { display: flex; align-items: center; gap: 4px; }
+    .edu-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.68; }
+
+    /* ═══════════════════════════════
+       THESES & PROJECTS
+    ═══════════════════════════════ */
+    .theses-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-bottom: 64px;
+    }
+
+    .thesis-card {
+      background: var(--surface);
+      border: 1px solid var(--border-s);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .thesis-card:hover { border-color: var(--accent); }
+
+    .thesis-img { width: 100%; height: 168px; object-fit: cover; filter: brightness(0.85); }
+    .thesis-body { padding: 20px 22px; }
+    .thesis-badge {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 3px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(196,146,58,0.10);
+      color: var(--accent);
+      border: 1px solid rgba(196,146,58,0.22);
+      margin-bottom: 10px;
+    }
+    .thesis-title { font-weight: 600; font-size: 0.975rem; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+    .thesis-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--dim);
+      margin-bottom: 12px;
+    }
+    .thesis-points { }
+    .thesis-points li {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.7;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+    .thesis-points li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.7rem;
+      top: 4px;
+    }
+
+    .projects-sub-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 22px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .proj-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .proj-card:hover { border-color: var(--border-s); }
+
+    .proj-img-wrap { overflow: hidden; height: 148px; }
+    .proj-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.80); transition: filter 0.35s, transform 0.35s; }
+    .proj-card:hover .proj-img-wrap img { filter: brightness(0.90); transform: scale(1.04); }
+
+    .proj-body { padding: 16px 18px; flex: 1; display: flex; flex-direction: column; }
+    .proj-title { font-weight: 600; font-size: 0.9rem; color: var(--text); margin-bottom: 7px; line-height: 1.4; }
+    .proj-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 12px;
+    }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+    /* ═══════════════════════════════
+       SKILLS
+    ═══════════════════════════════ */
+    #skills {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .skill-group {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: border-color 0.2s;
+    }
+    .skill-group:hover { border-color: var(--border-s); }
+
+    .skill-group-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .s-tag {
+      padding: 3px 11px;
+      border-radius: 3px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      background: var(--surface);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      transition: all 0.18s;
+    }
+    .s-tag:hover { color: var(--text); border-color: var(--border-s); }
+
+    /* ─── Extras ─── */
+    .extras-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .extra-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+    }
+
+    .extra-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 12px 0 10px;
+    }
+
+    .extra-sub-head {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .extra-sub-head i { color: var(--accent); }
+
+    .extra-head {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--dim);
+      margin-bottom: 13px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .extra-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.86rem;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .extra-row:last-child { border-bottom: none; }
+    .extra-badge {
+      font-size: 0.74rem;
+      color: var(--accent);
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+    }
+    .extra-badge-steel  { color: var(--accent2); }
+    .extra-badge-sage   { color: var(--accent3); }
+
+    /* ═══════════════════════════════
+       CONTACT
+    ═══════════════════════════════ */
+    #contact { text-align: center; }
+
+    .contact-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 44px 0 48px;
+    }
+
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 26px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 210px;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+    .contact-card:hover { border-color: var(--border-s); opacity: 1; }
+    .contact-card:hover .c-icon { color: var(--accent); }
+
+    .c-icon { font-size: 1.25rem; color: var(--muted); transition: color 0.2s; }
+    .c-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--dim);
+      font-weight: 600;
+    }
+    .c-val {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-top: 2px;
+    }
+
+    /* ═══════════════════════════════
+       FOOTER
+    ═══════════════════════════════ */
+    footer {
+      text-align: center;
+      padding: 28px;
+      border-top: 1px solid var(--border);
+      font-family: 'Inter', sans-serif;
+      color: var(--dim);
+      font-size: 0.82rem;
+      letter-spacing: 0.01em;
+    }
+    footer a { color: var(--dim); transition: color 0.18s; }
+    footer a:hover { color: var(--accent); opacity: 1; }
+
+    /* ─── Scroll-to-top ─── */
+    #scroll-top {
+      position: fixed;
+      bottom: 26px; right: 26px;
+      width: 40px; height: 40px;
+      border-radius: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border-s);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+      z-index: 900;
+    }
+    #scroll-top.visible { opacity: 1; pointer-events: all; }
+    #scroll-top:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ─── Animations ─── */
+    .fade-up { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ═══════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════ */
+    @media (max-width: 920px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 64px 0; }
+      .about-grid { grid-template-columns: 1fr; text-align: center; gap: 32px; }
+      .about-photo-col { width: 100%; }
+      .about-values { grid-template-columns: 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .theses-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .extras-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .contact-grid { flex-direction: column; align-items: center; }
+      .contact-card { min-width: unset; width: 100%; max-width: 340px; }
+      .timeline { padding-left: 22px; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ════════════════════════
+     NAVIGATION
+════════════════════════ -->
+<nav id="nav" role="navigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Harish<span>.</span></a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" class="nav-link">
+        <span class="lang-en">About</span><span class="lang-de">Über mich</span>
+      </a></li>
+      <li><a href="#experience" class="nav-link">
+        <span class="lang-en">Experience</span><span class="lang-de">Erfahrung</span>
+      </a></li>
+      <li><a href="#education" class="nav-link">
+        <span class="lang-en">Education</span><span class="lang-de">Ausbildung</span>
+      </a></li>
+      <li><a href="#projects" class="nav-link">
+        <span class="lang-en">Projects</span><span class="lang-de">Projekte</span>
+      </a></li>
+      <li><a href="#skills" class="nav-link">
+        <span class="lang-en">Skills</span><span class="lang-de">Fähigkeiten</span>
+      </a></li>
+      <li><a href="#contact" class="nav-link">
+        <span class="lang-en">Contact</span><span class="lang-de">Kontakt</span>
+      </a></li>
+    </ul>
+
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+      </div>
+      <div class="nav-icon-links">
+        <a href="https://www.linkedin.com/in/harish-natarajan-ravi-325337b1/" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://github.com/harishnr93" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about"      class="mobile-link"><span class="lang-en">About</span><span class="lang-de">Über mich</span></a>
+  <a href="#experience" class="mobile-link"><span class="lang-en">Experience</span><span class="lang-de">Erfahrung</span></a>
+  <a href="#education"  class="mobile-link"><span class="lang-en">Education</span><span class="lang-de">Ausbildung</span></a>
+  <a href="#projects"   class="mobile-link"><span class="lang-en">Projects</span><span class="lang-de">Projekte</span></a>
+  <a href="#skills"     class="mobile-link"><span class="lang-en">Skills</span><span class="lang-de">Fähigkeiten</span></a>
+  <a href="#contact"    class="mobile-link"><span class="lang-en">Contact</span><span class="lang-de">Kontakt</span></a>
+</div>
+
+<!-- ════════════════════════
+     HERO
+════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dot-grid"></div>
+  <div class="container hero-content">
+
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text lang-en">Embedded &amp; Perception Engineer</span>
+      <span class="hero-eyebrow-text lang-de">Embedded &amp; Perception Ingenieur</span>
+    </div>
+
+    <h1 class="hero-name">
+      <span class="grad">Harish</span><br>Natarajan Ravi
+    </h1>
+
+    <p class="hero-subtitle lang-en">Embedded Systems &nbsp;·&nbsp; Perception &nbsp;·&nbsp; AI &nbsp;·&nbsp; Autonomous Systems</p>
+    <p class="hero-subtitle lang-de">Eingebettete Systeme &nbsp;·&nbsp; Wahrnehmung &nbsp;·&nbsp; KI &nbsp;·&nbsp; Autonome Systeme</p>
+
+    <p class="hero-location">
+      <i class="fa-solid fa-location-dot"></i>
+      <span class="lang-en">Germany</span>
+      <span class="lang-de">Deutschland</span>
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">
+        <i class="fa-regular fa-paper-plane"></i>
+        <span class="lang-en">Contact</span>
+        <span class="lang-de">Kontakt</span>
+      </a>
+      <a href="#experience" class="btn btn-outline">
+        <i class="fa-solid fa-briefcase"></i>
+        <span class="lang-en">View Experience</span>
+        <span class="lang-de">Erfahrung ansehen</span>
+      </a>
+      <div class="cv-dropdown-wrap">
+        <button class="btn btn-outline" id="cvBtn">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span class="lang-en">Curriculum Vitae</span>
+          <span class="lang-de">Lebenslauf</span>
+          <i class="fa-solid fa-chevron-down" style="font-size:0.65rem;"></i>
+        </button>
+        <div class="cv-dropdown" id="cvDropdown">
+          <a href="docs/cv_harish_natarajan_ravi_en.pdf" target="_blank">
+            <i class="fa-solid fa-file-lines"></i>
+            <span class="lang-en">English CV</span><span class="lang-de">Englischer Lebenslauf</span>
+          </a>
+          <a href="docs/cv_harish_natarajan_ravi_de.pdf" target="_blank">
+            <i class="fa-solid fa-file-lines"></i>
+            <span class="lang-en">German CV</span><span class="lang-de">Deutscher Lebenslauf</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">9<span>+</span></div>
+        <div class="stat-label lang-en">Years of Experience</div>
+        <div class="stat-label lang-de">Jahre Berufserfahrung</div>
+      </div>
+      <div>
+        <div class="stat-num">5<span>+</span></div>
+        <div class="stat-label lang-en">Companies</div>
+        <div class="stat-label lang-de">Unternehmen</div>
+      </div>
+      <div>
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-label lang-en">Projects</div>
+        <div class="stat-label lang-de">Projekte</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label lang-en">Theses</div>
+        <div class="stat-label lang-de">Abschlussarbeiten</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════
+     ABOUT
+════════════════════════ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid fade-up">
+
+      <div class="about-photo-col">
+        <div class="about-photo-frame">
+          <img src="images/harishnr.png" alt="Harish Natarajan Ravi" class="about-photo">
+        </div>
+        <div class="about-social">
+          <a href="https://www.linkedin.com/in/harish-natarajan-ravi-325337b1/" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/harishnr93" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="mailto:harrish.nr@gmail.com" title="Email"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label lang-en">About</div>
+        <div class="section-label lang-de">Über mich</div>
+        <h2 class="section-title lang-en">Precision Engineering for Embedded &amp; Autonomous Systems</h2>
+        <h2 class="section-title lang-de">Präzisionstechnik für eingebettete und autonome Systeme</h2>
+
+        <p class="about-intro lang-en">
+          With over nine years of experience across embedded systems, autonomous driving, and AI research,
+          I specialise in designing and delivering robust software solutions for safety-critical applications.
+          My work spans sensor fusion pipelines, ADAS platform development, cloud-connected vehicle architectures,
+          and machine learning — always with reliability and real-world performance as the central objectives.
+        </p>
+        <p class="about-intro lang-de">
+          Mit über neun Jahren Erfahrung in eingebetteten Systemen, autonomem Fahren und KI-Forschung
+          spezialisiere ich mich auf die Entwicklung robuster Softwarelösungen für sicherheitskritische Anwendungen.
+          Meine Arbeit umfasst Sensorfusion-Pipelines, ADAS-Plattformentwicklung, Cloud-vernetzte Fahrzeugarchitekturen
+          und maschinelles Lernen — stets mit Zuverlässigkeit und realer Leistung als zentralen Zielen.
+        </p>
+
+        <div class="about-values">
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-code"></i></div>
+            <div class="value-title lang-en">Core Expertise</div>
+            <div class="value-title lang-de">Kernkompetenz</div>
+            <div class="value-desc lang-en">Proficient in C/C++ and Python; deep knowledge of ROS and Linux; experienced in embedded systems development and integration.</div>
+            <div class="value-desc lang-de">Fundierte Kenntnisse in C/C++ und Python; tiefes Verständnis von ROS und Linux; erfahren in der Entwicklung und Integration eingebetteter Systeme.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-microchip"></i></div>
+            <div class="value-title lang-en">Specialisation</div>
+            <div class="value-title lang-de">Spezialisierung</div>
+            <div class="value-desc lang-en">Extensive experience with LiDAR and camera technologies; expertise in building reliable perception systems and Human-Machine Interfaces.</div>
+            <div class="value-desc lang-de">Umfassende Erfahrung mit LiDAR und Kameras; Expertise bei zuverlässigen Wahrnehmungssystemen und Mensch-Maschine-Schnittstellen.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <div class="value-title lang-en">Analytical Approach</div>
+            <div class="value-title lang-de">Analytische Arbeitsweise</div>
+            <div class="value-desc lang-en">Adept at decomposing complex requirements and delivering efficient, scalable solutions through rigorous testing and validation.</div>
+            <div class="value-desc lang-de">Kompetent in der Analyse komplexer Anforderungen und Lieferung effizienter, skalierbarer Lösungen durch gründliches Testen und Validieren.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+            <div class="value-title lang-en">Engineering Philosophy</div>
+            <div class="value-title lang-de">Ingenieurphilosophie</div>
+            <div class="value-desc lang-en">Reliability first, user-centred design, and continuous improvement through disciplined adoption of current best practices.</div>
+            <div class="value-desc lang-de">Zuverlässigkeit zuerst, nutzerzentriertes Design und kontinuierliche Verbesserung durch disziplinierten Einsatz aktueller Best Practices.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+     EXPERIENCE
+════════════════════════ -->
+<section id="experience" class="section">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label lang-en">Professional History</div>
+      <div class="section-label lang-de">Berufliche Laufbahn</div>
+      <h2 class="section-title lang-en">Work Experience</h2>
+      <h2 class="section-title lang-de">Berufserfahrung</h2>
+      <p class="section-sub lang-en">Over nine years across embedded software, perception systems, and applied AI research — spanning Germany and India.</p>
+      <p class="section-sub lang-de">Mehr als neun Jahre in Embedded Software, Wahrnehmungssystemen und angewandter KI-Forschung — in Deutschland und Indien.</p>
+    </div>
+
+    <div class="timeline">
+
+      <!-- Fraunhofer IVI -->
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <img src="images/fraunhofer_ivi.png" alt="Fraunhofer IVI" class="tl-logo">
+            <div>
+              <div class="tl-role lang-en">Research Assistant — Sensor Fusion, Tracking &amp; AI</div>
+              <div class="tl-role lang-de">Wissenschaftlicher Mitarbeiter — Sensorfusion, Tracking &amp; KI</div>
+              <div class="tl-company">Fraunhofer IVI</div>
+              <div class="tl-meta">
+                <span><i class="fa-regular fa-calendar"></i> Nov 2025 – Present</span>
+                <span><i class="fa-solid fa-location-dot"></i> Ingolstadt, DE</span>
+                <span><i class="fa-solid fa-briefcase"></i><span class="lang-en">Researcher</span><span class="lang-de">Forscher</span></span>
+              </div>
+            </div>
+          </div>
+          <p class="tl-desc lang-en">
+            Contributing to the 5GoIng First-Mile intelligent mobility project through the development and optimisation of
+            multi-sensor fusion pipelines for robust perception in autonomous systems. Focus areas include AI-aided
+            multi-object tracking and state estimation, integrating classical estimation methods with modern
+            learning-based approaches to support reliable, real-time perception for connected and autonomous mobility.
+          </p>
+          <p class="tl-desc lang-de">
+            Beitrag zum 5GoIng First-Mile-Projekt für intelligente Mobilität durch Entwicklung und Optimierung
+            von Multi-Sensor-Fusion-Pipelines für robuste Wahrnehmung in autonomen Systemen. Schwerpunkte sind
+            KI-gestütztes Multi-Objekt-Tracking und Zustandsschätzung — Integration klassischer Schätzverfahren
+            mit modernen lernbasierten Ansätzen für zuverlässige Echtzeit-Wahrnehmung in vernetzter Mobilität.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">C/C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">Sensor Fusion</span>
+            <span class="tag">Kalman Filter</span>
+            <span class="tag">Object Tracking</span>
+            <span class="tag">ML/DNN</span>
+            <span class="tag">GitLab</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mercor -->
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <img src="images/mercor.png" alt="Mercor" class="tl-logo">
+            <div>
+              <div class="tl-role lang-en">Software Development Engineer</div>
+              <div class="tl-role lang-de">Software-Entwicklungsingenieur</div>
+              <div class="tl-company">Mercor</div>
+              <div class="tl-meta">
+                <span><i class="fa-regular fa-calendar"></i> Jan 2025 – Oct 2025</span>
+                <span><i class="fa-solid fa-location-dot"></i> Leonberg, DE</span>
+                <span><i class="fa-solid fa-briefcase"></i> Mini-Job</span>
+              </div>
+            </div>
+          </div>
+          <p class="tl-desc lang-en">
+            Optimised advanced Embodied AI models to improve performance and computational efficiency for
+            real-world autonomous systems. Integrated models into existing system pipelines, ensuring
+            seamless deployment and reliable operation under varying environmental and hardware conditions.
+            Conducted systematic testing and validation in both simulation and on physical platforms.
+          </p>
+          <p class="tl-desc lang-de">
+            Optimierung fortschrittlicher Embodied-AI-Modelle zur Verbesserung von Leistung und Recheneffizienz
+            für reale autonome Systeme. Integration in bestehende System-Pipelines mit zuverlässigem Betrieb
+            unter variierenden Bedingungen. Systematisches Testen und Validieren in Simulation und auf
+            physischen Plattformen zur Sicherstellung der Produktionsreife.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">Python</span>
+            <span class="tag">C/C++</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">Docker</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">DNN Frameworks</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Porsche Engineering -->
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <img src="images/porsche.jpg" alt="Porsche Engineering GmbH" class="tl-logo">
+            <div>
+              <div class="tl-role lang-en">ADAS Software Development Engineer</div>
+              <div class="tl-role lang-de">ADAS Software-Entwicklungsingenieur</div>
+              <div class="tl-company">Porsche Engineering GmbH</div>
+              <div class="tl-meta">
+                <span><i class="fa-regular fa-calendar"></i> Sep 2023 – Sep 2024</span>
+                <span><i class="fa-solid fa-location-dot"></i> Mönsheim, DE</span>
+                <span><i class="fa-solid fa-briefcase"></i><span class="lang-en">Internship</span><span class="lang-de">Praktikum</span></span>
+              </div>
+            </div>
+          </div>
+          <p class="tl-desc lang-en">
+            Designed and implemented efficient parking solutions leveraging SLAM algorithms, LiDAR, camera, and
+            computer vision techniques on resource-constrained embedded platforms. Developed and validated the
+            perception pipeline in both simulation environments and directly on the vehicle, achieving seamless
+            real-time integration that enhanced parking assist system accuracy within strict hardware constraints.
+          </p>
+          <p class="tl-desc lang-de">
+            Entwurf und Implementierung effizienter Parklösungen mit SLAM-Algorithmen, LiDAR, Kamera und
+            Computer-Vision-Techniken auf ressourcenbeschränkten Embedded-Plattformen. Entwicklung und
+            Validierung der Wahrnehmungs-Pipeline in Simulation und direkt im Fahrzeug — nahtlose
+            Echtzeit-Integration mit deutlich verbesserter Einparkhilfesystem-Genauigkeit.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">C/C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">ROS1 / ROS2</span>
+            <span class="tag">SLAM</span>
+            <span class="tag">LiDAR</span>
+            <span class="tag">Docker</span>
+            <span class="tag">CI/CD</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Robert Bosch GmbH Stuttgart -->
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <img src="images/bosch_de.jpg" alt="Robert Bosch GmbH" class="tl-logo">
+            <div>
+              <div class="tl-role lang-en">System Development &amp; Modelling Engineer</div>
+              <div class="tl-role lang-de">Systementwicklungs- und Modellierungsingenieur</div>
+              <div class="tl-company">Robert Bosch GmbH</div>
+              <div class="tl-meta">
+                <span><i class="fa-regular fa-calendar"></i> Mar 2023 – Aug 2023</span>
+                <span><i class="fa-solid fa-location-dot"></i> Stuttgart, DE</span>
+                <span><i class="fa-solid fa-briefcase"></i><span class="lang-en">Working Student</span><span class="lang-de">Werkstudent</span></span>
+              </div>
+            </div>
+          </div>
+          <p class="tl-desc lang-en">
+            Contributed to the development, modelling, and engineering of ViPER modules for advanced parking
+            assist systems. Applied requirements engineering to L3 camera-based systems, verifying and validating
+            specifications against ISO standards. Collaborated across cross-functional teams to optimise system
+            reliability and functional performance in parking assistance functions.
+          </p>
+          <p class="tl-desc lang-de">
+            Mitarbeit bei Entwicklung, Modellierung und Konstruktion von ViPER-Modulen für fortschrittliche
+            Einparkhilfesysteme. Requirements Engineering für kamerabasierte L3-Systeme — Verifikation und
+            Validierung der Spezifikationen gegen ISO-Normen. Enge Zusammenarbeit mit funktionsübergreifenden
+            Teams zur Optimierung von Systemzuverlässigkeit und Funktionsperformance.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">Python</span>
+            <span class="tag">UML / SysML</span>
+            <span class="tag">MBSE</span>
+            <span class="tag">Enterprise Architecture</span>
+            <span class="tag">Jira</span>
+            <span class="tag">Confluence</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fraunhofer IEM -->
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <img src="images/fraunhofer.jpg" alt="Fraunhofer IEM" class="tl-logo">
+            <div>
+              <div class="tl-role lang-en">Research Engineer — Software Development</div>
+              <div class="tl-role lang-de">Forschungsingenieur — Software-Entwicklung</div>
+              <div class="tl-company">Fraunhofer IEM</div>
+              <div class="tl-meta">
+                <span><i class="fa-regular fa-calendar"></i> Sep 2021 – Feb 2023</span>
+                <span><i class="fa-solid fa-location-dot"></i> Paderborn, DE</span>
+                <span><i class="fa-solid fa-briefcase"></i><span class="lang-en">Working Student</span><span class="lang-de">Werkstudent</span></span>
+              </div>
+            </div>
+          </div>
+          <p class="tl-desc lang-en">
+            Designed and developed a Car-to-Cloud demonstrator using Formula 1 telemetry data to illustrate the
+            integration between embedded systems and cloud platforms. Contributed to the KUKSA research project
+            for Software-Defined Vehicles, implementing odometry and telemetry data extraction and leveraging
+            cloud-native technologies for real-time analytics and IoT functionality.
+          </p>
+          <p class="tl-desc lang-de">
+            Entwurf und Entwicklung eines Car-to-Cloud-Demonstrators auf Basis von Formel-1-Telemetriedaten
+            zur Illustration der Integration zwischen eingebetteten Systemen und Cloud-Plattformen. Mitarbeit
+            am KUKSA-Forschungsprojekt für Software-Defined Vehicles — Implementierung von Odometrie- und
+            Telemetriedatenextraktion sowie Cloud-Native-Technologien für Echtzeit-Analysen und IoT-Funktionen.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">Python</span>
+            <span class="tag">C/C++</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">Eclipse HONO</span>
+            <span class="tag">Grafana</span>
+            <span class="tag">Bash</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Robert Bosch India -->
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <img src="images/bosch_in.jpg" alt="Robert Bosch Engineering India" class="tl-logo">
+            <div>
+              <div class="tl-role lang-en">Software Development Engineer</div>
+              <div class="tl-role lang-de">Software-Entwicklungsingenieur</div>
+              <div class="tl-company">Robert Bosch Engineering &amp; Business Solutions</div>
+              <div class="tl-meta">
+                <span><i class="fa-regular fa-calendar"></i> Apr 2017 – Sep 2020</span>
+                <span><i class="fa-solid fa-location-dot"></i> Bengaluru, IN</span>
+                <span><i class="fa-solid fa-briefcase"></i><span class="lang-en">Full-Time</span><span class="lang-de">Vollzeit</span></span>
+              </div>
+            </div>
+          </div>
+          <p class="tl-desc lang-en">
+            Developed service layer functionalities for the DCM package in compliance with AUTOSAR and ASPICE
+            standards. Implemented OBD platform module functions for ASW components and enhanced diagnostics
+            infrastructure for leading OEMs including Daimler, Volkswagen, and Honda. Debugged and validated
+            OBD functional modules, drawing on deep expertise in functional safety, ADAS/AD systems,
+            and ECU diagnostic protocols.
+          </p>
+          <p class="tl-desc lang-de">
+            Entwicklung von Service-Layer-Funktionalitäten für das DCM-Paket gemäß AUTOSAR- und
+            ASPICE-Standards. Implementierung von OBD-Plattformfunktionen für ASW-Komponenten und Verbesserung
+            der Diagnoseinfrastruktur für führende OEMs einschließlich Daimler, Volkswagen und Honda. Debugging
+            und Validierung von OBD-Funktionsmodulen mit fundierter Expertise in Funktionaler Sicherheit,
+            ADAS/AD-Systemen und ECU-Diagnoseprotokollen.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">Embedded C/C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">AUTOSAR</span>
+            <span class="tag">ASPICE</span>
+            <span class="tag">OBD / Diagnostics</span>
+            <span class="tag">ISO 26262</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- IBM India -->
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <img src="images/IBM.jpg" alt="IBM India" class="tl-logo">
+            <div>
+              <div class="tl-role lang-en">Technical Analyst — Software Engineering</div>
+              <div class="tl-role lang-de">Technischer Analyst — Software-Engineering</div>
+              <div class="tl-company">IBM India</div>
+              <div class="tl-meta">
+                <span><i class="fa-regular fa-calendar"></i> Jul 2015 – Apr 2017</span>
+                <span><i class="fa-solid fa-location-dot"></i> Bengaluru, IN</span>
+                <span><i class="fa-solid fa-briefcase"></i><span class="lang-en">Full-Time</span><span class="lang-de">Vollzeit</span></span>
+              </div>
+            </div>
+          </div>
+          <p class="tl-desc lang-en">
+            Developed and implemented test automation scripts, significantly streamlining the testing process
+            and increasing overall efficiency. Designed and deployed functional tasks for OpenVMS Mainframe
+            Systems across multiple programming languages. In a systems analyst capacity, planned and executed
+            complex system changes — including server node migrations and cluster booting — while maintaining
+            a 99.5% SLA availability.
+          </p>
+          <p class="tl-desc lang-de">
+            Entwicklung und Implementierung von Testautomatisierungsskripten zur deutlichen Optimierung des
+            Testprozesses und Steigerung der Gesamteffizienz. Entwurf und Deployment funktionaler Tasks für
+            OpenVMS-Mainframe-Systeme in mehreren Programmiersprachen. Als Systemanalyst Planung und
+            Durchführung komplexer Systemänderungen — einschließlich Server-Node-Migrationen und
+            Cluster-Starts — bei einer SLA-Verfügbarkeit von 99,5%.
+          </p>
+          <div class="tl-tags">
+            <span class="tag">C/C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">DCL</span>
+            <span class="tag">Bash</span>
+            <span class="tag">OpenVMS</span>
+            <span class="tag">Test Automation</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+  </div>
+</section>
+
+<!-- ════════════════════════
+     EDUCATION
+════════════════════════ -->
+<section id="education" class="section" style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label lang-en">Academic Background</div>
+      <div class="section-label lang-de">Akademischer Werdegang</div>
+      <h2 class="section-title lang-en">Education</h2>
+      <h2 class="section-title lang-de">Ausbildung</h2>
+      <p class="section-sub lang-en">A rigorous academic foundation spanning electronics, embedded systems, and applied computer science.</p>
+      <p class="section-sub lang-de">Eine fundierte akademische Ausbildung in Elektronik, eingebetteten Systemen und angewandter Informatik.</p>
+    </div>
+
+    <div class="edu-grid">
+
+      <div class="edu-card fade-up">
+        <img src="images/uni_pad.jpg" alt="University of Paderborn" class="edu-img">
+        <div class="edu-body">
+          <div class="edu-degree lang-en">M.Sc. Computer Engineering</div>
+          <div class="edu-degree lang-de">M.Sc. Computer Engineering</div>
+          <div class="edu-school lang-en">University of Paderborn</div>
+          <div class="edu-school lang-de">Universität Paderborn</div>
+          <div class="edu-meta">
+            <span><i class="fa-regular fa-calendar"></i> Oct 2020 – Sep 2024</span>
+            <span><i class="fa-solid fa-location-dot"></i> Paderborn, DE</span>
+            <span><i class="fa-solid fa-graduation-cap"></i> Grade 1.8</span>
+          </div>
+          <p class="edu-desc lang-en">
+            Specialised in Embedded Systems with coursework in Image Processing, Robotics, Computer Vision, Statistical Signal
+            Processing, Machine Learning, Model-Based System Design, Networked Embedded Systems, and Software
+            Quality Assurance. Strong emphasis on both theoretical foundations and applied engineering practice.
+          </p>
+          <p class="edu-desc lang-de">
+            Spezialisierung auf eingebettete Systeme mit Kursen in Bildverarbeitung, Robotik, Computer Vision, statistischer
+            Signalverarbeitung, maschinellem Lernen, modellbasiertem Systemdesign, vernetzten eingebetteten
+            Systemen und Software-Qualitätssicherung. Starke Verbindung theoretischer Grundlagen mit
+            angewandter Ingenieursarbeit.
+          </p>
+        </div>
+      </div>
+
+      <div class="edu-card fade-up">
+        <img src="images/cmr.jpg" alt="Visvesvaraya Technological University" class="edu-img">
+        <div class="edu-body">
+          <div class="edu-degree lang-en">B.E. Electronics &amp; Communication Engineering</div>
+          <div class="edu-degree lang-de">B.E. Elektronik und Kommunikationstechnik</div>
+          <div class="edu-school lang-en">Visvesvaraya Technological University</div>
+          <div class="edu-school lang-de">Visvesvaraya Technological University</div>
+          <div class="edu-meta">
+            <span><i class="fa-regular fa-calendar"></i> Sep 2011 – Jun 2015</span>
+            <span><i class="fa-solid fa-location-dot"></i> Bengaluru, IN</span>
+            <span><i class="fa-solid fa-graduation-cap"></i> Grade 2.3</span>
+          </div>
+          <p class="edu-desc lang-en">
+            Focused on Embedded Systems and Image Processing, with studies in Microwaves and Radar,
+            Microprocessors and Microcontrollers, Control Systems, Digital and Wireless Communication,
+            Operating Systems, and Network Security. Established a strong foundation in electrical
+            engineering principles and their practical application.
+          </p>
+          <p class="edu-desc lang-de">
+            Schwerpunkt auf eingebetteten Systemen und Bildverarbeitung; Studieninhalte in Mikrowellen und
+            Radar, Mikroprozessoren und Mikrocontrollern, Regelungstechnik, Digital- und Drahtloskommunikation,
+            Betriebssystemen und Netzwerksicherheit. Solides Fundament in elektrotechnischen Grundlagen und
+            deren praktischer Anwendung.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+     THESES & PROJECTS
+════════════════════════ -->
+<section id="projects" class="section">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label lang-en">Research &amp; Development</div>
+      <div class="section-label lang-de">Forschung &amp; Entwicklung</div>
+      <h2 class="section-title lang-en">Theses &amp; Projects</h2>
+      <h2 class="section-title lang-de">Abschlussarbeiten &amp; Projekte</h2>
+      <p class="section-sub lang-en">Academic theses and independent engineering projects demonstrating applied research and software development capability.</p>
+      <p class="section-sub lang-de">Akademische Abschlussarbeiten und eigenständige Ingenieurprojekte — angewandte Forschung und Softwareentwicklung in der Praxis.</p>
+    </div>
+
+    <div class="section-label lang-en fade-up" style="margin-bottom:18px;">Academic Theses</div>
+    <div class="section-label lang-de fade-up" style="margin-bottom:18px;">Akademische Abschlussarbeiten</div>
+
+    <div class="theses-grid">
+
+      <div class="thesis-card fade-up">
+        <img src="images/masterthesis_parking.jpg" alt="Parking Maps" class="thesis-img">
+        <div class="thesis-body">
+          <div class="thesis-badge lang-en">Master's Thesis</div>
+          <div class="thesis-badge lang-de">Masterarbeit</div>
+          <h3 class="thesis-title lang-en">Generation and Relocalization of Parking Maps</h3>
+          <h3 class="thesis-title lang-de">Erzeugung und Relokalisierung von Parkkarten</h3>
+          <p class="thesis-meta">C++, ROS2 &nbsp;·&nbsp; Porsche Engineering GmbH &nbsp;·&nbsp; Mönsheim, DE</p>
+          <ul class="thesis-points lang-en">
+            <li>Designed and implemented a parking map generation pipeline using SLAM algorithms.</li>
+            <li>Reconstructed and relocalized the ego-vehicle within the generated parking map.</li>
+            <li>Evaluated real-time pipeline performance in both simulation and on-vehicle testing.</li>
+            <li>Delivered measurable improvements to parking assist system accuracy and reliability.</li>
+          </ul>
+          <ul class="thesis-points lang-de">
+            <li>Entwicklung einer Parkkarten-Pipeline mit SLAM-Algorithmen.</li>
+            <li>Rekonstruktion und Relokalisierung des Ego-Fahrzeugs in der generierten Parkkarte.</li>
+            <li>Evaluierung der Echtzeit-Pipeline in Simulation und Fahrzeugtest.</li>
+            <li>Messbare Verbesserungen bei Genauigkeit und Zuverlässigkeit der Einparkhilfesysteme.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="thesis-card fade-up">
+        <img src="images/speechsignals.jpg" alt="Adaptive Filter" class="thesis-img">
+        <div class="thesis-body">
+          <div class="thesis-badge lang-en">Bachelor's Thesis</div>
+          <div class="thesis-badge lang-de">Bachelorarbeit</div>
+          <h3 class="thesis-title lang-en">Design, Simulation &amp; Implementation of an Optimal Adaptive Filter</h3>
+          <h3 class="thesis-title lang-de">Entwurf, Simulation &amp; Implementierung eines optimalen adaptiven Filters</h3>
+          <p class="thesis-meta">MATLAB, Verilog &nbsp;·&nbsp; Visvesvaraya Technological University &nbsp;·&nbsp; Bengaluru, IN</p>
+          <ul class="thesis-points lang-en">
+            <li>Developed adaptive filtering techniques for speech signals in acoustically noisy environments.</li>
+            <li>Implemented adaptive algorithms on Xilinx Spartan 6 FPGA hardware.</li>
+            <li>Optimised FPGA designs for resource efficiency and reduced power consumption.</li>
+            <li>Achieved effective suppression of varying background noise in speech signals.</li>
+          </ul>
+          <ul class="thesis-points lang-de">
+            <li>Entwicklung adaptiver Filtertechniken für Sprachsignale in akustisch verrauschten Umgebungen.</li>
+            <li>Implementierung adaptiver Algorithmen auf Xilinx Spartan 6 FPGA-Hardware.</li>
+            <li>Optimierung der FPGA-Designs für Ressourceneffizienz und reduzierten Stromverbrauch.</li>
+            <li>Effektive Unterdrückung von veränderlichem Hintergrundrauschen in Sprachsignalen.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="projects-sub-label lang-en fade-up">Independent &amp; Academic Projects</div>
+    <div class="projects-sub-label lang-de fade-up">Eigenständige &amp; akademische Projekte</div>
+
+    <div class="projects-grid">
+
+      <div class="proj-card fade-up">
+        <div class="proj-img-wrap"><img src="images/getlab.jpg" alt="Disaster Response Robots"></div>
+        <div class="proj-body">
+          <h3 class="proj-title lang-en">Disaster Response Robots</h3>
+          <h3 class="proj-title lang-de">Katastrophenschutzroboter</h3>
+          <p class="proj-desc lang-en">Reconstructed the LOAM pipeline using SLAM and extended loop closure detection with LiDAR and camera data, leveraging 2D/3D keypoint extraction and descriptor algorithms via OpenCV for robust autonomous localisation.</p>
+          <p class="proj-desc lang-de">Rekonstruktion der LOAM-Pipeline mit SLAM und Erweiterung der Loop-Closure-Erkennung mit LiDAR- und Kameradaten durch 2D/3D-Schlüsselpunkt-Extraktion und Deskriptor-Algorithmen via OpenCV für robuste autonome Lokalisierung.</p>
+          <div class="proj-tags"><span class="tag">C++</span><span class="tag">ROS1</span><span class="tag">SLAM</span><span class="tag">OpenCV</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up">
+        <div class="proj-img-wrap"><img src="images/autonomous_vehicle_perception.jpg" alt="Autonomous Vehicle Perception"></div>
+        <div class="proj-body">
+          <h3 class="proj-title lang-en">Autonomous Vehicle Perception Pipeline</h3>
+          <h3 class="proj-title lang-de">Autonome Fahrzeugwahrnehmungs-Pipeline</h3>
+          <p class="proj-desc lang-en">Python-based perception pipeline using OpenCV and NumPy: drivable space estimation via RANSAC, lane line detection, and object detection with distance estimation on pre-recorded RGB and depth datasets.</p>
+          <p class="proj-desc lang-de">Python-basierte Wahrnehmungs-Pipeline mit OpenCV und NumPy: Fahrflächenschätzung via RANSAC, Spurerkennung und Objekterkennung mit Entfernungsschätzung auf RGB- und Tiefendatensätzen.</p>
+          <div class="proj-tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">RANSAC</span><span class="tag">Computer Vision</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up">
+        <div class="proj-img-wrap"><img src="images/visual_Odom.jpg" alt="Visual Odometry"></div>
+        <div class="proj-body">
+          <h3 class="proj-title lang-en">Visual Odometry for Camera Motion Estimation</h3>
+          <h3 class="proj-title lang-de">Visuelle Odometrie zur Kamerabewegungsschätzung</h3>
+          <p class="proj-desc lang-en">Visual odometry pipeline employing ORB features, FLANN matching, and Essential Matrix Decomposition to track camera movement and reconstruct 3D trajectories from sequential image streams.</p>
+          <p class="proj-desc lang-de">Visuelle Odometrie-Pipeline mit ORB-Features, FLANN-Matching und Essential-Matrix-Zerlegung zur Kamerabewegungsverfolgung und 3D-Trajektorienrekonstruktion aus sequenziellen Bildfolgen.</p>
+          <div class="proj-tags"><span class="tag">Python</span><span class="tag">ORB Features</span><span class="tag">Pose Estimation</span><span class="tag">OpenCV</span></div>
+        </div>
+      </div>
+
+
+      <div class="proj-card fade-up">
+        <div class="proj-img-wrap"><img src="images/depth_estimation_transformers.jpg" alt="Monocular Depth Estimation"></div>
+        <div class="proj-body">
+          <h3 class="proj-title lang-en">Monocular Depth Estimation with Transformers</h3>
+          <h3 class="proj-title lang-de">Monokulare Tiefenschätzung mit Transformers</h3>
+          <p class="proj-desc lang-en">Interactive depth estimation pipeline using the Depth-Anything V2 model via Hugging Face's pipeline API with GPU acceleration. Applicable to augmented reality, robotics, and autonomous navigation contexts.</p>
+          <p class="proj-desc lang-de">Interaktive Tiefenschätzungs-Pipeline mit Depth-Anything V2 über die Hugging-Face-API mit GPU-Beschleunigung. Anwendbar in Augmented Reality, Robotik und autonomer Navigation.</p>
+          <div class="proj-tags"><span class="tag">Python</span><span class="tag">Transformers</span><span class="tag">Depth Estimation</span><span class="tag">PyTorch</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up">
+        <div class="proj-img-wrap"><img src="images/object_detection_media.gif" alt="YOLO Benchmarking"></div>
+        <div class="proj-body">
+          <h3 class="proj-title lang-en">YOLO Models &amp; Real-Time Detection Benchmarking</h3>
+          <h3 class="proj-title lang-de">YOLO-Modelle &amp; Echtzeit-Erkennungs-Benchmarking</h3>
+          <p class="proj-desc lang-en">Systematic evaluation of YOLOv8 through YOLO12 and RT-DETRv2 across deployment scenarios. Custom PyTorch/CUDA benchmarking tools measuring speed, accuracy, and hardware efficiency across representative datasets.</p>
+          <p class="proj-desc lang-de">Systematische Evaluierung von YOLOv8 bis YOLO12 und RT-DETRv2. Benutzerdefinierte PyTorch/CUDA-Benchmarking-Tools zur Messung von Geschwindigkeit, Genauigkeit und Hardwareeffizienz.</p>
+          <div class="proj-tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">YOLO</span><span class="tag">CUDA</span></div>
+        </div>
+      </div>
+
+
+      <div class="proj-card fade-up">
+        <div class="proj-img-wrap"><img src="images/linefollower.jpg" alt="Line Follower Robot"></div>
+        <div class="proj-body">
+          <h3 class="proj-title lang-en">Line Follower Robot (AVR Microcontroller)</h3>
+          <h3 class="proj-title lang-de">Linienfolger-Roboter (AVR-Mikrocontroller)</h3>
+          <p class="proj-desc lang-en">Autonomous line-following robot using precise line detection algorithms with analogue outputs of reflective optical sensors and custom-built encoders for accurate track mapping and navigation.</p>
+          <p class="proj-desc lang-de">Autonomer Linienfolger-Roboter mit Linienerkennungsalgorithmen, analogen Ausgaben reflektiver Lichtsensoren und selbst entwickelten Encodern für präzise Streckenerfassung und Navigation.</p>
+          <div class="proj-tags"><span class="tag">Embedded C</span><span class="tag">AVR</span><span class="tag">Sensors</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+     SKILLS
+════════════════════════ -->
+<section id="skills" class="section">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label lang-en">Technical Profile</div>
+      <div class="section-label lang-de">Technisches Profil</div>
+      <h2 class="section-title lang-en">Skills &amp; Technical Expertise</h2>
+      <h2 class="section-title lang-de">Fähigkeiten &amp; Technische Expertise</h2>
+      <p class="section-sub lang-en">A broad technical toolkit built over nine years across embedded development, autonomous systems, AI research, and cloud engineering.</p>
+      <p class="section-sub lang-de">Ein breites technisches Repertoire, aufgebaut über neun Jahre in Embedded-Entwicklung, autonomen Systemen, KI-Forschung und Cloud-Engineering.</p>
+    </div>
+
+    <div class="skills-grid fade-up">
+
+      <div class="skill-group">
+        <div class="skill-group-title"><i class="fa-solid fa-code"></i>
+          <span class="lang-en">Programming Languages</span>
+          <span class="lang-de">Programmiersprachen</span>
+        </div>
+        <div class="skill-tags">
+          <span class="s-tag">C</span><span class="s-tag">C++</span><span class="s-tag">Python</span>
+          <span class="s-tag">C#</span><span class="s-tag">Bash / Shell</span>
+          <span class="s-tag">MATLAB / Simulink</span><span class="s-tag">Perl</span><span class="s-tag">Verilog</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title"><i class="fa-solid fa-robot"></i>
+          <span class="lang-en">Robotics &amp; Autonomous Systems</span>
+          <span class="lang-de">Robotik &amp; Autonome Systeme</span>
+        </div>
+        <div class="skill-tags">
+          <span class="s-tag">ROS1</span><span class="s-tag">ROS2</span><span class="s-tag">SLAM</span>
+          <span class="s-tag">Sensor Fusion</span><span class="s-tag">LiDAR</span>
+          <span class="s-tag">Camera Systems</span><span class="s-tag">Radar</span>
+          <span class="s-tag">Object Tracking</span><span class="s-tag">CARLA Simulator</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title"><i class="fa-solid fa-brain"></i>
+          <span class="lang-en">AI / ML &amp; Computer Vision</span>
+          <span class="lang-de">KI / ML &amp; Computer Vision</span>
+        </div>
+        <div class="skill-tags">
+          <span class="s-tag">PyTorch</span><span class="s-tag">TensorFlow</span>
+          <span class="s-tag">OpenCV</span><span class="s-tag">Transformers (HuggingFace)</span>
+          <span class="s-tag">CNN</span><span class="s-tag">YOLO</span>
+          <span class="s-tag">Kalman Filters</span><span class="s-tag">Depth Estimation</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title"><i class="fa-solid fa-microchip"></i>
+          <span class="lang-en">Embedded &amp; Automotive</span>
+          <span class="lang-de">Embedded &amp; Automotive</span>
+        </div>
+        <div class="skill-tags">
+          <span class="s-tag">AUTOSAR</span><span class="s-tag">ASPICE</span>
+          <span class="s-tag">INCA</span><span class="s-tag">DiagRA</span>
+          <span class="s-tag">TRACE32</span><span class="s-tag">CANoe</span>
+          <span class="s-tag">CANalyzer</span><span class="s-tag">QNX</span>
+          <span class="s-tag">Windows</span><span class="s-tag">Linux</span>
+          <span class="s-tag">UDE</span><span class="s-tag">Valgrind</span>
+          <span class="s-tag">AddressSanitizer</span><span class="s-tag">Clang / cppcheck</span>
+          <span class="s-tag">VS Code</span><span class="s-tag">Eclipse</span>
+          <span class="s-tag">Jetson Nano</span><span class="s-tag">Raspberry Pi</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title"><i class="fa-solid fa-server"></i>
+          <span class="lang-en">DevOps &amp; Cloud</span>
+          <span class="lang-de">DevOps &amp; Cloud</span>
+        </div>
+        <div class="skill-tags">
+          <span class="s-tag">Docker</span><span class="s-tag">Kubernetes</span>
+          <span class="s-tag">CI/CD</span><span class="s-tag">Git / GitHub / GitLab</span>
+          <span class="s-tag">Vagrant</span><span class="s-tag">Eclipse HONO</span>
+          <span class="s-tag">Grafana</span><span class="s-tag">Linux / WSL</span>
+          <span class="s-tag">Confluence</span><span class="s-tag">Jira</span>
+          <span class="s-tag">DOORS</span><span class="s-tag">Rhapsody</span>
+          <span class="s-tag">SDOM</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title"><i class="fa-solid fa-scale-balanced"></i>
+          <span class="lang-en">Standards &amp; Methodologies</span>
+          <span class="lang-de">Normen &amp; Methoden</span>
+        </div>
+        <div class="skill-tags">
+          <span class="s-tag">ISO 26262</span><span class="s-tag">ISO 23150</span>
+          <span class="s-tag">ISO 20900</span><span class="s-tag">SAE J1979</span>
+          <span class="s-tag">SAE J1979-DA</span><span class="s-tag">ISO 15504</span>
+          <span class="s-tag">UML / SysML</span><span class="s-tag">MBSE</span>
+          <span class="s-tag">Unit Testing</span>
+          <span class="s-tag">Functional Testing</span>
+
+          <span class="s-tag">Enterprise Architecture</span>
+          <span class="s-tag">TDD</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="extras-grid fade-up">
+
+      <div class="extra-card">
+        <div class="extra-head"><i class="fa-solid fa-language"></i>
+          <span class="lang-en">Languages</span>
+          <span class="lang-de">Sprachen</span>
+        </div>
+        <div class="extra-row">
+          <span class="lang-en">English</span><span class="lang-de">Englisch</span>
+          <span class="extra-badge lang-en">Proficient</span>
+          <span class="extra-badge lang-de">Professionell</span>
+        </div>
+        <div class="extra-row">
+          <span class="lang-en">German</span><span class="lang-de">Deutsch</span>
+          <span class="extra-badge extra-badge-steel lang-en">Intermediate</span>
+          <span class="extra-badge extra-badge-steel lang-de">Mittelstufe</span>
+        </div>
+        <div class="extra-row">
+          <span class="lang-en">Tamil</span><span class="lang-de">Tamil</span>
+          <span class="extra-badge extra-badge-sage lang-en">Native</span>
+          <span class="extra-badge extra-badge-sage lang-de">Muttersprache</span>
+        </div>
+        <hr class="extra-divider">
+        <div class="extra-sub-head">
+          <i class="fa-solid fa-car-side"></i>
+          <span class="lang-en">Driving Licence</span>
+          <span class="lang-de">Führerschein</span>
+        </div>
+        <div class="extra-row">
+          <span class="lang-en">German Driving Licence</span>
+          <span class="lang-de">Führerschein</span>
+          <span class="extra-badge lang-en">Class B</span>
+          <span class="extra-badge lang-de">Klasse B</span>
+        </div>
+      </div>
+
+      <div class="extra-card">
+        <div class="extra-head"><i class="fa-solid fa-user"></i>
+          <span class="lang-en">Professional Qualities</span>
+          <span class="lang-de">Persönliche Kompetenzen</span>
+        </div>
+        <div class="extra-row"><span class="lang-en">Problem Solving</span><span class="lang-de">Problemlösung</span></div>
+        <div class="extra-row"><span class="lang-en">Critical Thinking</span><span class="lang-de">Kritisches Denken</span></div>
+        <div class="extra-row"><span class="lang-en">Effective Communication</span><span class="lang-de">Effektive Kommunikation</span></div>
+        <div class="extra-row"><span class="lang-en">Teamwork and Collaboration</span><span class="lang-de">Teamarbeit und Zusammenarbeit</span></div>
+        <div class="extra-row"><span class="lang-en">Time Management and Organisation</span><span class="lang-de">Zeitmanagement und Organisation</span></div>
+        <div class="extra-row"><span class="lang-en">Adaptability and Flexibility</span><span class="lang-de">Anpassungsfähigkeit und Flexibilität</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+     CONTACT
+════════════════════════ -->
+<section id="contact" class="section" style="background:var(--surface); border-top:1px solid var(--border);">
+  <div class="container fade-up">
+    <div class="section-label lang-en" style="text-align:center;">Contact</div>
+    <div class="section-label lang-de" style="text-align:center;">Kontakt</div>
+    <h2 class="section-title lang-en" style="text-align:center;">Open to Professional Opportunities</h2>
+    <h2 class="section-title lang-de" style="text-align:center;">Offen für professionelle Möglichkeiten</h2>
+    <p class="section-sub lang-en" style="text-align:center; margin: 10px auto 0;">
+      I welcome enquiries regarding roles in embedded systems, autonomous driving, and perception engineering.
+      Please reach out via any of the channels below.
+    </p>
+    <p class="section-sub lang-de" style="text-align:center; margin: 10px auto 0;">
+      Ich freue mich über Anfragen zu Positionen in eingebetteten Systemen, autonomem Fahren und Perception Engineering.
+      Kontaktieren Sie mich gerne über einen der folgenden Kanäle.
+    </p>
+
+    <div class="contact-grid">
+      <a href="mailto:harrish.nr@gmail.com" class="contact-card">
+        <i class="fa-regular fa-envelope c-icon"></i>
+        <div class="contact-info">
+          <div class="c-label lang-en">Email</div>
+          <div class="c-label lang-de">E-Mail</div>
+          <div class="c-val">harrish.nr@gmail.com</div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/harish-natarajan-ravi-325337b1/" target="_blank" rel="noopener" class="contact-card">
+        <i class="fa-brands fa-linkedin-in c-icon"></i>
+        <div class="contact-info">
+          <div class="c-label">LinkedIn</div>
+          <div class="c-val">Harish Natarajan Ravi</div>
+        </div>
+      </a>
+      <a href="https://github.com/harishnr93" target="_blank" rel="noopener" class="contact-card">
+        <i class="fa-brands fa-github c-icon"></i>
+        <div class="contact-info">
+          <div class="c-label">GitHub</div>
+          <div class="c-val">harishnr93</div>
+        </div>
+      </a>
+    </div>
+
+    <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+      <a href="docs/cv_harish_natarajan_ravi_en.pdf" target="_blank" class="btn btn-primary">
+        <i class="fa-solid fa-file-lines"></i>
+        <span class="lang-en">Download English CV</span>
+        <span class="lang-de">Englischer Lebenslauf</span>
+      </a>
+      <a href="docs/cv_harish_natarajan_ravi_de.pdf" target="_blank" class="btn btn-outline">
+        <i class="fa-solid fa-file-lines"></i>
+        <span class="lang-en">Download German CV</span>
+        <span class="lang-de">Deutschen Lebenslauf herunterladen</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════
+     FOOTER
+════════════════════════ -->
+<footer>
+  <span class="lang-en">&copy; 2025 Harish Natarajan Ravi &nbsp;&middot;&nbsp; Germany</span>
+  <span class="lang-de">&copy; 2025 Harish Natarajan Ravi &nbsp;&middot;&nbsp; Deutschland</span>
+</footer>
+
+<button id="scroll-top" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<!-- ════════════════════════
+     JAVASCRIPT
+════════════════════════ -->
+<script>
+  // ── Language toggle ──────────────────────────────
+  const langBtns = document.querySelectorAll('.lang-btn');
+
+  function setLang(lang) {
+    const html = document.documentElement;
+    html.classList.toggle('de', lang === 'de');
+    html.lang = lang;
+    langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('hnr-lang', lang); } catch(e) {}
+  }
+
+  langBtns.forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+
+  try { if (localStorage.getItem('hnr-lang') === 'de') setLang('de'); } catch(e) {}
+
+  // ── Hamburger / mobile menu ───────────────────────
+  const hamburger   = document.getElementById('hamburger');
+  const mobileMenu  = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+  });
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+  }));
+
+  // ── CV dropdown ────────────────────────────────────
+  const cvBtn      = document.getElementById('cvBtn');
+  const cvDropdown = document.getElementById('cvDropdown');
+  cvBtn.addEventListener('click', e => { e.stopPropagation(); cvDropdown.classList.toggle('open'); });
+  document.addEventListener('click', () => cvDropdown.classList.remove('open'));
+
+  // ── Scroll-to-top ──────────────────────────────────
+  const scrollTop = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => scrollTop.classList.toggle('visible', scrollY > 400), { passive: true });
+
+  // ── Active nav highlight ───────────────────────────
+  const sections  = document.querySelectorAll('section[id]');
+  const navLinks  = document.querySelectorAll('.nav-link');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (scrollY + 80 >= s.offsetTop) current = s.id; });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href').slice(1) === current));
+  }, { passive: true });
+
+  // ── Fade-up on scroll ──────────────────────────────
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
