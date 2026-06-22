@@ -1181,7 +1181,12 @@
   const navLinks = document.querySelectorAll('.nav-link');
   window.addEventListener('scroll', () => {
     let current = '';
-    sections.forEach(s => { if (scrollY + 80 >= s.offsetTop) current = s.id; });
+    const atBottom = window.innerHeight + scrollY >= document.body.scrollHeight - 50;
+    if (atBottom) {
+      current = sections[sections.length - 1].id;
+    } else {
+      sections.forEach(s => { if (scrollY + 80 >= s.offsetTop) current = s.id; });
+    }
     navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href').slice(1) === current));
   }, { passive: true });
 
