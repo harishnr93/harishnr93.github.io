@@ -401,6 +401,12 @@
     .fade-up { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-up.visible { opacity: 1; transform: none; }
 
+    /* Swap CV button styles when German is active */
+    html.de #cv-btn-en { background: transparent; color: var(--text); border: 1px solid var(--border-s); }
+    html.de #cv-btn-en:hover { border-color: var(--accent); color: var(--accent); opacity: 1; transform: translateY(-1px); }
+    html.de #cv-btn-de { background: var(--accent); color: #0c1018; border: none; }
+    html.de #cv-btn-de:hover { background: var(--accent-h); opacity: 1; transform: translateY(-1px); }
+
     /* ═══════════════════════════════
        RESPONSIVE
     ═══════════════════════════════ */
@@ -501,11 +507,11 @@
         <div class="cv-dropdown" id="cvDropdown">
           <a href="docs/cv_harish_natarajan_ravi_en.pdf" target="_blank">
             <i class="fa-solid fa-file-lines"></i>
-            <span class="lang-en">English CV</span><span class="lang-de">Englischer Lebenslauf</span>
+            <span class="lang-en">English CV</span><span class="lang-de">EN-Lebenslauf</span>
           </a>
           <a href="docs/cv_harish_natarajan_ravi_de.pdf" target="_blank">
             <i class="fa-solid fa-file-lines"></i>
-            <span class="lang-en">German CV</span><span class="lang-de">Deutscher Lebenslauf</span>
+            <span class="lang-en">German CV</span><span class="lang-de">DE-Lebenslauf</span>
           </a>
         </div>
       </div>
@@ -921,6 +927,14 @@
         </div>
       </div>
     </div>
+
+    <p class="section-sub lang-en fade-up" style="margin-top:32px; margin-bottom:0; white-space:nowrap;">
+      For more details and source code, visit my <a href="https://github.com/harishnr93" target="_blank" rel="noopener">GitHub page</a>.
+    </p>
+    <p class="section-sub lang-de fade-up" style="margin-top:32px; margin-bottom:0; white-space:nowrap;">
+      Weitere Details und Quellcode finden Sie auf meiner <a href="https://github.com/harishnr93" target="_blank" rel="noopener">GitHub-Seite</a>.
+    </p>
+
   </div>
 </section>
 
@@ -1046,10 +1060,10 @@
           <span class="lang-en">Driving Licence</span><span class="lang-de">Führerschein</span>
         </div>
         <div class="extra-row">
-          <span class="lang-en">German Driving Licence, Class B</span>
-          <span class="lang-de">Führerschein Klasse B</span>
-          <span class="extra-badge lang-en">Class B</span>
-          <span class="extra-badge lang-de">Klasse B</span>
+          <span class="lang-en">German Driving Licence</span>
+          <span class="lang-de">Deutscher Führerschein</span>
+          <span class="extra-badge lang-en">Class B (EU/EEA)</span>
+          <span class="extra-badge lang-de">Klasse B (EU/EWR)</span>
         </div>
       </div>
 
@@ -1104,13 +1118,14 @@
       </a>
     </div>
     <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
-      <a href="docs/cv_harish_natarajan_ravi_en.pdf" target="_blank" class="btn btn-primary">
+      <a href="docs/cv_harish_natarajan_ravi_en.pdf" target="_blank" class="btn btn-primary" id="cv-btn-en">
         <i class="fa-solid fa-file-lines"></i>
         <span class="lang-en">Download English CV</span><span class="lang-de">Englischer Lebenslauf</span>
       </a>
-      <a href="docs/cv_harish_natarajan_ravi_de.pdf" target="_blank" class="btn btn-outline">
-        <i class="fa-solid fa-file-lines"></i>
-        <span class="lang-en">Download German CV</span><span class="lang-de">Deutschen Lebenslauf herunterladen</span>
+      <a href="docs/cv_harish_natarajan_ravi_de.pdf" target="_blank" class="btn btn-outline" id="cv-btn-de">
+        <i class="fa-solid fa-file-lines lang-en"></i>
+        <i class="fa-solid fa-file-lines lang-de"></i>
+        <span class="lang-en">Download German CV</span><span class="lang-de">Deutschen Lebenslauf</span>
       </a>
     </div>
   </div>
@@ -1120,8 +1135,8 @@
      FOOTER
 ════════════════════════ -->
 <footer>
-  <span class="lang-en">&copy; 2025 Harish Natarajan Ravi &nbsp;&middot;&nbsp; Stuttgart Region, Germany</span>
-  <span class="lang-de">&copy; 2025 Harish Natarajan Ravi &nbsp;&middot;&nbsp; Raum Stuttgart, Deutschland</span>
+  <span class="lang-en">&copy; 2026 Harish Natarajan Ravi &nbsp;&middot;&nbsp; Germany</span>
+  <span class="lang-de">&copy; 2026 Harish Natarajan Ravi &nbsp;&middot;&nbsp; Deutschland</span>
 </footer>
 
 <button id="scroll-top" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
